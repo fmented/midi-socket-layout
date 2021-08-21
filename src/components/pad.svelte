@@ -16,12 +16,13 @@ function offHandler() {
     active=false
     d("note_off", {note:n, velocity:randInt(96, 127), channel})  
 }
+
 </script>
 
 <style>
     .pad{
         aspect-ratio: 1/1;
-        height: 29vh;
+        height: 29%;
         margin: auto;
         background-color: blue;
         border-radius: 10px;
@@ -35,4 +36,7 @@ function offHandler() {
 
 <div class="pad" class:active={active} 
 on:touchstart={onHandler} 
-on:touchend={offHandler}></div>
+on:touchend={offHandler}
+on:touchcancel={offHandler}
+on:touchmove={e=>e.preventDefault()}
+></div>
