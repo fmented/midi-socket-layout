@@ -11,14 +11,14 @@
     let note = Number(target.getAttribute("note"))+loNote;
     target.setAttribute("fill", "#66D")
     console.log(note);
-    d("note_on", { note, channel, velocity: randInt(80, 127) });
+    d("note_on", { note, channel, velocity: randInt(90, 127) });
   }
 
   function up(e) {
     let { target } = e;
     let note = Number(target.getAttribute("note"))+loNote;
     target.setAttribute("fill", target.localName=="rect"?"white":'black')
-    d("note_off", { note, channel, velocity: randInt(80, 127) });
+    d("note_off", { note, channel, velocity: 0 });
   }
 
   function cancel(e) {
