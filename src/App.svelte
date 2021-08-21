@@ -8,12 +8,9 @@ import {io} from 'socket.io-client'
 
 const socket = io()
 
-let landscape = window.innerWidth>window.innerHeight
+let landscape = screen.orientation.type.includes("landscape")
 
-function checkLandscape() {
-	landscape = window.innerWidth>window.innerHeight
-}
-
+screen.orientation.addEventListener("change",(e)=> landscape=e.target.type.includes("landscape"))
 
 const views = [Launchpad, Drums, Mixer, Piano]
 
@@ -52,7 +49,6 @@ function noteOff({detail}) {
 }
 </script>
 
-<svelte:window on:orientationchange={checkLandscape}/>
 <main>
 	{#if landscape}
 	<svelte:component this={views[x]}
@@ -60,14 +56,16 @@ function noteOff({detail}) {
 	on:note_off={noteOff}
 	on:cc={cc}
 	/>
+
+	<div class="swap"  on:contextmenu="{change}">↩</div>
+	<div class="fs"  on:contextmenu="{fs}">{!fullscreen?'↗':'↙'}</div>
 	{:else}
 	<div class="all-center">
 		<h2>PLEASE USE LANDSCAPE MODE</h2>
 	</div>
 	{/if}
 	
-	<div class="swap"  on:contextmenu="{change}">↩</div>
-	<div class="fs"  on:contextmenu="{fs}">{!fullscreen?'↗':'↙'}</div>
+	
 </main>
 
 <style>
