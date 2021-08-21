@@ -18,7 +18,7 @@
     let { target } = e;
     let note = Number(target.getAttribute("note"))+loNote;
     target.setAttribute("fill", target.localName=="rect"?"white":'black')
-    d("note_on", { note, channel, velocity: randInt(80, 127) });
+    d("note_off", { note, channel, velocity: randInt(80, 127) });
   }
 
   function cancel(e) {
