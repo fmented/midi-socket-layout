@@ -427,11 +427,13 @@
 <style>
   .swap {
     color: #ff6644;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2em;
+    font-size: 2.5em;
+    font-weight:bolder;
+	-webkit-text-stroke: 1px white;
   }
 
   .flip {

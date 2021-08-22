@@ -22,19 +22,17 @@
   }
 
   function cancel(e) {
-    e.preventDefault()
-    d("all_note_off", {channel,});
-    [...svg.children].forEach(el=>{
-      el.setAttribute("fill", el.localName=="rect"?"white":'black')
-    })
-
+    up(e)
   }
 </script>
 
 <style>
-
+div{
+  height: 100vh;
+  width: 100vw;
+}
 </style>
-
+<div>
 <svg
   width="100%"
   height="100%"
@@ -60,7 +58,7 @@ on:touchcancel={cancel}
   <rect
     on:touchstart={down}
     on:touchend={up} on:touchmove={e=>e.preventDefault()}
-on:touchcancel={cancel}
+    on:touchcancel={cancel}
 
     x="63.5"
     y="0.5"
@@ -340,3 +338,4 @@ on:touchcancel={cancel}
     note="20"
   />
 </svg>
+</div>

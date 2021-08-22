@@ -32,8 +32,8 @@
     let tr = voltrack.getBoundingClientRect()
     let {clientY:y} = e.touches[0]
     if(y<tr.top-rect.height && y>tr.bottom+rect.height) return
-    vol = scale(y, [tr.top, tr.bottom-(rect.height/2)], [0, tr.height-(rect.height*.85)])
-    let value = ~~scale(vol, [0, tr.height-(rect.height*.85)], [127, 0])
+    vol = scale(y, [tr.top-(rect.height/2), tr.bottom-(rect.height/2)], [0, tr.height-(rect.height*.80)])
+    let value = ~~scale(vol, [0, tr.height-(rect.height*.80)], [127, 0])
     if(value==currentVol) return
     currentVol = value
     d('cc', {channel, control:7, value})
@@ -47,8 +47,8 @@
     let tr = pantrack.getBoundingClientRect()
     let {clientX:x} = e.touches[0]
     if(x<tr.left-rect.width && x>tr.right+rect.width) return
-    pan = scale(x, [tr.left-(rect.width/2), tr.right-(rect.width/2)], [0, tr.width-(rect.width*.85)])
-    let value = ~~scale(pan, [0, tr.width-(rect.width*.85)], [0, 127])
+    pan = scale(x, [tr.left-(rect.width/2), tr.right+(rect.width/2)], [0, tr.width-(rect.width*.80)])
+    let value = ~~scale(pan, [0, tr.width-(rect.width*.80)], [0, 127])
     if(value==currentPan) return
     currentPan = value
     d('cc', {channel, control:10, value})
